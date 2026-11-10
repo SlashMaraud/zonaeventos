@@ -1,0 +1,38 @@
+name: Actualizar zona.m3u
+
+on:
+  schedule:
+    - cron: '15 */3 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Instalar Playwright
+        run: pip install playwright
+
+      - name: Instalar navegador virtual
+        run: playwright install --with-deps chromium
+
+      - name: Ejecutar scraper
+        run: python zona.py
+
+      - name: Guardar resultados
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add zona_debug.txt
+          if [ -f zona.m3u ]; then git add zona.m3u; fi
+          git diff --staged --quiet || (git commit -m "Auto-actualizacion de zona.m3u" && git push)
