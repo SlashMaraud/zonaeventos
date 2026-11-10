@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 """
 Scraper SOLO para https://zonaeventoslive.infinityfreeapp.com/
@@ -10,6 +9,9 @@ carpeta de la web. Cualquier otro tipo de enlace se ignora.
 Como la web es una pagina con JavaScript (y la protege InfinityFree),
 se abre con Playwright (un Chromium sin pantalla). Se leen los datos por
 capas, de mas a menos fiable:
+  0) Registros DNS TXT (base64 + gzip) que la propia pagina consulta en
+     dns.google: ahi guarda la lista (indice con carpetas -> cada carpeta
+     apunta a otro registro con sus canales).
   1) JSON de la lista (tipo .w3u: grupos con estaciones y enlaces),
      tanto el que descarga la pagina como el que lleve incrustado.
   2) Enlaces sueltos (acestream://, getstream?id=...) con su nombre.
@@ -24,6 +26,9 @@ Escribe zona_debug.txt (sin fechas, para que solo cambie si cambia algo).
 import re
 import sys
 import json
+import gzip
+import zlib
+import base64
 
 # ============================================================
 # CONFIGURACION
@@ -78,7 +83,10 @@ ID_RE = re.compile(
 HASH40_RE = re.compile(r"(?<![a-fA-F0-9])[a-fA-F0-9]{40}(?![a-fA-F0-9])")
 NAME_RE = re.compile(r'"(?:name|title)"\s*:\s*"((?:[^"\\]|\\.){1,200})"')
 
-LIST_KEYS = ("groups", "stations", "channels", "items", "list", "folders")
+LIST_KEYS = (
+    "groups", "stations", "channels", "items", "list", "folders",
+    "subLinks", "links",
+)
 LINK_KEYS = (
     "url", "link", "stream", "src", "href",
     "hash", "id", "infohash", "content_id",
@@ -230,6 +238,154 @@ def collect_from_text(text, structured, loose):
 
 
 # ============================================================
+# CAPA 0: REGISTROS DNS TXT (base64 + gzip) DE LA PROPIA WEB
+# ============================================================
+
+SUB_KEYS = ("subLinks", "items", "channels", "links", "stations")
+
+
+def decode_txt_payload(data):
+    """Decodifica el contenido de un registro TXT: base64 -> gzip -> JSON."""
+    if not isinstance(data, str) or not data.strip():
+        return None
+
+    # Google junta los trozos de 255 caracteres; por si vienen entre comillas
+    segments = re.findall(r'"((?:[^"\\]|\\.)*)"', data)
+    text = "".join(segments) if segments else data
+    text = re.sub(r"\s+", "", text)
+
+    variants = (text, text.replace("-", "+").replace("_", "/"))
+    for variant in variants:
+        padded = variant + "=" * (-len(variant) % 4)
+        try:
+            raw = base64.b64decode(padded)
+        except Exception:
+            continue
+
+        try:
+            if raw[:2] == b"\x1f\x8b":
+                raw = gzip.decompress(raw)
+            elif raw[:1] == b"x":
+                raw = zlib.decompress(raw)
+        except Exception:
+            continue
+
+        try:
+            return json.loads(raw.decode("utf-8"))
+        except Exception:
+            continue
+
+    try:  # por si el TXT ya es JSON plano
+        return json.loads(data)
+    except Exception:
+        return None
+
+
+def walk_dns(records):
+    """
+    records = {nombre_del_registro: lista_json}. Los registros que nadie
+    referencia son la raiz; las carpetas ("type": "category") apuntan con
+    "ref" a otro registro con sus canales.
+    """
+    referenced = set()
+
+    def collect_refs(obj):
+        if isinstance(obj, dict):
+            ref = obj.get("ref")
+            if isinstance(ref, str):
+                referenced.add(ref.lower())
+            for value in obj.values():
+                collect_refs(value)
+        elif isinstance(obj, list):
+            for value in obj:
+                collect_refs(value)
+
+    for payload in records.values():
+        collect_refs(payload)
+
+    roots = sorted(label for label in records if label not in referenced)
+    found = []
+
+    def walk_items(items, group, stack):
+        if isinstance(items, dict):
+            items = [items]
+        if not isinstance(items, list):
+            return
+
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+
+            raw_name = item.get("name") or item.get("title")
+            name = raw_name.strip() if isinstance(raw_name, str) else ""
+
+            ref = item.get("ref")
+            if isinstance(ref, str):
+                label = ref.lower()
+                if label in records and label not in stack:
+                    walk_items(records[label], name or group, stack | {label})
+                continue
+
+            for key in SUB_KEYS:
+                if isinstance(item.get(key), list):
+                    walk_items(item[key], name or group, stack)
+
+            for key in ("url", "link", "stream", "src"):
+                record = record_from_value(item.get(key), name, group)
+                if record:
+                    found.append(record)
+                    break
+
+    for label in roots:
+        walk_items(records[label], None, {label})
+
+    return found, len(roots)
+
+
+def collect_from_dns(bodies):
+    """Busca respuestas DNS-sobre-HTTPS con la lista y las decodifica."""
+    records = {}
+    seen = 0
+
+    for url, body in bodies:
+        if '"Answer"' not in body:
+            continue
+        try:
+            data = json.loads(body)
+        except Exception:
+            continue
+        if not isinstance(data, dict):
+            continue
+        seen += 1
+
+        question = (data.get("Question") or [{}])[0].get("name", "")
+        label = question.rstrip(".").split(".")[0].lower()
+        answers = [
+            a.get("data", "") for a in (data.get("Answer") or [])
+            if isinstance(a, dict) and a.get("type") == 16
+        ]
+
+        payload = None
+        for answer in answers:
+            payload = decode_txt_payload(answer)
+            if payload is not None:
+                break
+        if payload is None and len(answers) > 1:
+            payload = decode_txt_payload("".join(answers))
+
+        if label and payload is not None:
+            records[label] = payload
+
+    info = f"Respuestas DNS: {seen} | registros decodificados: {len(records)}"
+    if not records:
+        return [], info
+
+    found, roots = walk_dns(records)
+    info += f" | registros raiz: {roots}"
+    return found, info
+
+
+# ============================================================
 # LO QUE SE VE EN LA PAGINA (DOM)
 # ============================================================
 
@@ -335,8 +491,17 @@ def open_and_read(page, bodies):
     except Exception:
         pass
 
-    for url, body in bodies[:25]:
-        log(f"    Respuesta: {url[:100]} ({len(body)} bytes)")
+    # Resumen estable (sin tamanos ni orden) para que el debug solo cambie
+    # cuando cambia algo de verdad
+    otras = sorted({u.split("?")[0][:100] for u, _ in bodies
+                    if "dns.google" not in u and "dns-query" not in u})
+    for url in otras[:15]:
+        log(f"    Respuesta: {url}")
+
+    dns_found, dns_info = collect_from_dns(bodies)
+    log(f"    {dns_info}")
+    if dns_found:
+        return dns_found, "DNS TXT (registros de la web)"
 
     structured = []
     loose = []
@@ -454,7 +619,7 @@ def write_m3u(found):
         name = clean_name(record.get("name")) or f"Canal {number}"
         url = final_url(record)
 
-        key = (group, name, url)
+        key = (name, url)
         if not url or key in seen:
             continue
         seen.add(key)
