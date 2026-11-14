@@ -1,11 +1,12 @@
-Intento 1 de 3
+Enlaces en la lista anterior: 170 | minimo esperado: 85
+Intento 1 de 4
     (no se encontro el boton 'desplegar')
     Titulo de la pagina: ''
     Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/aes.js
     Respuestas DNS: 23 | registros decodificados: 23 | registros raiz: 1
-    Capa usada: DNS TXT (registros de la web) | enlaces: 171
+    Capa usada: DNS TXT (registros de la web) | enlaces: 170
 
 ====================================
 LISTA M3U GENERADA CORRECTAMENTE
