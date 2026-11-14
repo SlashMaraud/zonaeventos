@@ -2,7 +2,7 @@ name: Actualizar zona.m3u
 
 on:
   schedule:
-    - cron: '15 */2 * * *'
+    - cron: '15 * * * *'
   workflow_dispatch:
 
 jobs:
