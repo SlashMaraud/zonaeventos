@@ -17,6 +17,10 @@ capas, de mas a menos fiable:
   2) Enlaces sueltos (acestream://, getstream?id=...) con su nombre.
   3) Lo que se vea en la pagina (enlaces, onclick, data-...).
 
+PROTECCION: si una lectura trae muy pocos enlaces comparada con la lista
+que ya existe (menos de MIN_RATIO), se reintenta; y si tras los intentos
+sigue siendo incompleta, NO se sobrescribe zona.m3u.
+
 Los enlaces se escriben para tu engine local de Ace Stream:
     http://127.0.0.1:6878/ace/getstream?id=ID
 
@@ -45,7 +49,13 @@ OUTPUT_FILE = "zona.m3u"
 DEBUG_FILE = "zona_debug.txt"
 SCREENSHOT_FILE = "zona_debug.png"
 
-ATTEMPTS = 3   # InfinityFree a veces pide recargar: se reintenta
+ATTEMPTS = 4   # InfinityFree a veces falla o pide recargar: se reintenta
+
+# Proteccion: una lectura se da por buena si trae al menos este
+# porcentaje de los enlaces que tenia la lista anterior.
+#   0.5 = al menos el 50 %. Bajalo si la web puede reducirse de verdad
+#   mucho de un dia para otro (p. ej. 0.3).
+MIN_RATIO = 0.5
 
 UA = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -456,6 +466,53 @@ def records_from_dom(rows):
 
 
 # ============================================================
+# ENLACES FINALES, DEDUPLICADO Y PROTECCION
+# ============================================================
+
+def final_url(record):
+    if record["hash"]:
+        if ENGINE_URL:
+            param = "infohash" if record["kind"] == "infohash" else "id"
+            return f"{ENGINE_URL.rstrip('/')}/ace/getstream?{param}={record['hash']}"
+        if record["kind"] == "infohash":
+            return f"acestream://?infohash={record['hash']}"
+        return f"acestream://{record['hash']}"
+    return record["url"]
+
+
+def dedupe(found):
+    """Devuelve [(carpeta, nombre, url)] sin repetidos."""
+    items = []
+    seen = set()
+
+    for number, record in enumerate(found, start=1):
+        group = clean_name(record.get("group")) or "SIN CARPETA"
+        name = clean_name(record.get("name")) or f"Canal {number}"
+        url = final_url(record)
+
+        key = (name, url)
+        if not url or key in seen:
+            continue
+        seen.add(key)
+        items.append((group, name, url))
+
+    return items
+
+
+def count_previous():
+    """Cuantos canales tiene el zona.m3u que ya existe (0 si no hay)."""
+    try:
+        with open(OUTPUT_FILE, encoding="utf-8") as file:
+            return sum(1 for line in file if line.startswith("#EXTINF"))
+    except Exception:
+        return 0
+
+
+def minimum_expected():
+    return max(1, int(count_previous() * MIN_RATIO))
+
+
+# ============================================================
 # SCRAPING
 # ============================================================
 
@@ -535,7 +592,12 @@ def scrape():
         log("Playwright no esta instalado.")
         return []
 
-    found = []
+    previous = count_previous()
+    minimum = minimum_expected()
+    log(f"Enlaces en la lista anterior: {previous} | minimo esperado: {minimum}")
+
+    best = []
+    best_count = 0
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True, args=["--no-sandbox"])
@@ -565,18 +627,24 @@ def scrape():
                 log(f"Intento {attempt} de {ATTEMPTS}")
                 bodies.clear()
 
-                found, layer = open_and_read(page, bodies)
-                log(f"    Capa usada: {layer} | enlaces: {len(found)}")
+                current, layer = open_and_read(page, bodies)
+                count = len(dedupe(current))
+                log(f"    Capa usada: {layer} | enlaces: {count}")
 
-                if found:
+                # Nos quedamos con la lectura mas completa de todas
+                if count > best_count:
+                    best, best_count = current, count
+
+                if best_count >= minimum:
                     break
 
+                log(f"    Lectura incompleta ({count} < {minimum}): se reintenta")
                 try:
                     text = page.inner_text("body")
                     log(f"    Texto de la pagina: {text[:300]!r}")
                 except Exception:
                     pass
-                page.wait_for_timeout(5000)
+                page.wait_for_timeout(8000)
 
             try:
                 page.screenshot(path=SCREENSHOT_FILE)
@@ -585,47 +653,34 @@ def scrape():
         finally:
             browser.close()
 
-    return found
+    return best
 
 
 # ============================================================
 # GENERACION M3U
 # ============================================================
 
-def final_url(record):
-    if record["hash"]:
-        if ENGINE_URL:
-            param = "infohash" if record["kind"] == "infohash" else "id"
-            return f"{ENGINE_URL.rstrip('/')}/ace/getstream?{param}={record['hash']}"
-        if record["kind"] == "infohash":
-            return f"acestream://?infohash={record['hash']}"
-        return f"acestream://{record['hash']}"
-    return record["url"]
-
-
 def write_m3u(found):
-    if not found:
+    items = dedupe(found)
+
+    if not items:
         log("\nERROR: no se ha encontrado ningun enlace.")
         log("No se sobrescribe la lista existente.")
         return
 
+    previous = count_previous()
+    minimum = minimum_expected()
+    if len(items) < minimum:
+        log(f"\nAVISO: solo {len(items)} enlaces (antes: {previous}, "
+            f"minimo esperado: {minimum}).")
+        log("Parece una lectura incompleta: no se sobrescribe la lista existente.")
+        return
+
     entries = ["#EXTM3U"]
-    seen = set()
     counts = {}
-    total = 0
 
-    for number, record in enumerate(found, start=1):
-        group = clean_name(record.get("group")) or "SIN CARPETA"
-        name = clean_name(record.get("name")) or f"Canal {number}"
-        url = final_url(record)
-
-        key = (name, url)
-        if not url or key in seen:
-            continue
-        seen.add(key)
-
+    for group, name, url in items:
         counts[group] = counts.get(group, 0) + 1
-        total += 1
         entries.append(f'#EXTINF:-1 group-title="{group}",{name}\n{url}')
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as file:
@@ -633,7 +688,7 @@ def write_m3u(found):
 
     log("\n====================================")
     log("LISTA M3U GENERADA CORRECTAMENTE")
-    log(f"Enlaces unicos: {total}")
+    log(f"Enlaces unicos: {len(items)}")
     for group, count in counts.items():
         log(f"  {group}: {count}")
     log(f"Archivo: {OUTPUT_FILE}")
