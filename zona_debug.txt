@@ -5,37 +5,21 @@ Intento 1 de 4
     Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/aes.js
-    Respuestas DNS: 6 | registros decodificados: 6 | registros raiz: 1
-    Capa usada: DNS TXT (registros de la web) | enlaces: 51
-    Lectura incompleta (51 < 81): se reintenta
-    Texto de la pagina: ''
-Intento 2 de 4
-    (no se encontro el boton 'desplegar')
-    Titulo de la pagina: ''
-    Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
-    Respuesta: https://zonaeventoslive.infinityfreeapp.com/
-    Respuestas DNS: 13 | registros decodificados: 13 | registros raiz: 1
-    Capa usada: DNS TXT (registros de la web) | enlaces: 75
-    Lectura incompleta (75 < 81): se reintenta
-    Texto de la pagina: ''
-Intento 3 de 4
-    (no se encontro el boton 'desplegar')
-    Titulo de la pagina: ''
-    Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
-    Respuesta: https://zonaeventoslive.infinityfreeapp.com/
-    Respuestas DNS: 13 | registros decodificados: 13 | registros raiz: 1
-    Capa usada: DNS TXT (registros de la web) | enlaces: 75
-    Lectura incompleta (75 < 81): se reintenta
-    Texto de la pagina: ''
-Intento 4 de 4
-    (no se encontro el boton 'desplegar')
-    Titulo de la pagina: ''
-    Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
-    Respuesta: https://zonaeventoslive.infinityfreeapp.com/
-    Respuestas DNS: 13 | registros decodificados: 13 | registros raiz: 1
-    Capa usada: DNS TXT (registros de la web) | enlaces: 75
-    Lectura incompleta (75 < 81): se reintenta
-    Texto de la pagina: ''
+    Respuestas DNS: 15 | registros decodificados: 15 | registros raiz: 1
+    Capa usada: DNS TXT (registros de la web) | enlaces: 96
 
-AVISO: solo 75 enlaces (antes: 162, minimo esperado: 81).
-Parece una lectura incompleta: no se sobrescribe la lista existente.
+====================================
+LISTA M3U GENERADA CORRECTAMENTE
+Enlaces unicos: 96
+  DAZN: 3
+  MOVISTAR: 3
+  MOVISTAR DEPORTES: 17
+  DEPORTES: 7
+  NBA: 3
+  TENNIS: 1
+  BALONCESTO: 10
+  MOTOGP: 1
+  ELCANO: 50
+  NEW_ERA (OTROS): 1
+Archivo: zona.m3u
+====================================
