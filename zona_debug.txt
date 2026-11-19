@@ -1,4 +1,4 @@
-Enlaces en la lista anterior: 108 | minimo esperado: 54
+Enlaces en la lista anterior: 98 | minimo esperado: 49
 Intento 1 de 4
     (no se encontro el boton 'desplegar')
     Titulo de la pagina: ''
@@ -6,14 +6,14 @@ Intento 1 de 4
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/aes.js
     Respuestas DNS: 16 | registros decodificados: 16 | registros raiz: 1
-    Capa usada: DNS TXT (registros de la web) | enlaces: 98
+    Capa usada: DNS TXT (registros de la web) | enlaces: 95
 
 ====================================
 LISTA M3U GENERADA CORRECTAMENTE
-Enlaces unicos: 98
-  BALONCESTO: 13
+Enlaces unicos: 95
+  BALONCESTO: 11
   DAZN: 2
-  FORMULA 1: 6
+  FORMULA 1: 5
   MOVISTAR: 1
   MOVISTAR DEPORTES: 11
   RFEF TV: 1
