@@ -1,43 +1,41 @@
-Enlaces en la lista anterior: 209 | minimo esperado: 104
+Enlaces en la lista anterior: 195 | minimo esperado: 97
 Intento 1 de 4
     (no se encontro el boton 'desplegar')
     Titulo de la pagina: ''
     Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/aes.js
-    Respuestas DNS: 7 | registros decodificados: 7 | registros raiz: 1
-    Capa usada: DNS TXT (registros de la web) | enlaces: 51
-    Lectura incompleta (51 < 104): se reintenta
+    Respuestas DNS: 13 | registros decodificados: 13 | registros raiz: 1
+    Capa usada: DNS TXT (registros de la web) | enlaces: 77
+    Lectura incompleta (77 < 97): se reintenta
     Texto de la pagina: ''
 Intento 2 de 4
     (no se encontro el boton 'desplegar')
     Titulo de la pagina: ''
     Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
-    Respuestas DNS: 24 | registros decodificados: 24 | registros raiz: 1
-    Capa usada: DNS TXT (registros de la web) | enlaces: 195
+    Respuestas DNS: 13 | registros decodificados: 13 | registros raiz: 1
+    Capa usada: DNS TXT (registros de la web) | enlaces: 77
+    Lectura incompleta (77 < 97): se reintenta
+    Texto de la pagina: ''
+Intento 3 de 4
+    (no se encontro el boton 'desplegar')
+    Titulo de la pagina: ''
+    Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
+    Respuesta: https://zonaeventoslive.infinityfreeapp.com/
+    Respuestas DNS: 13 | registros decodificados: 13 | registros raiz: 1
+    Capa usada: DNS TXT (registros de la web) | enlaces: 77
+    Lectura incompleta (77 < 97): se reintenta
+    Texto de la pagina: ''
+Intento 4 de 4
+    (no se encontro el boton 'desplegar')
+    Titulo de la pagina: ''
+    Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
+    Respuesta: https://zonaeventoslive.infinityfreeapp.com/
+    Respuestas DNS: 13 | registros decodificados: 13 | registros raiz: 1
+    Capa usada: DNS TXT (registros de la web) | enlaces: 77
+    Lectura incompleta (77 < 97): se reintenta
+    Texto de la pagina: ''
 
-====================================
-LISTA M3U GENERADA CORRECTAMENTE
-Enlaces unicos: 195
-  BALONCESTO: 16
-  DAZN: 8
-  EUROSPORT: 4
-  FORMULA 1: 7
-  HYPERMOTION: 8
-  LA LIGA: 12
-  LIGA DE CAMPEONES: 15
-  MOVISTAR: 2
-  MOVISTAR DEPORTES: 31
-  RFEF TV: 2
-  TDT: 8
-  DEPORTES: 18
-  MOTOGP: 4
-  NBA: 3
-  TENNIS: 4
-  TOROS: 1
-  UFC: 1
-  ELCANO: 50
-  NEW_ERA (OTROS): 1
-Archivo: zona.m3u
-====================================
+AVISO: solo 77 enlaces (antes: 195, minimo esperado: 97).
+Parece una lectura incompleta: no se sobrescribe la lista existente.
