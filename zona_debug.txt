@@ -1,33 +1,42 @@
-Enlaces en la lista anterior: 58 | minimo esperado: 29
+Enlaces en la lista anterior: 209 | minimo esperado: 104
 Intento 1 de 4
     (no se encontro el boton 'desplegar')
     Titulo de la pagina: ''
     Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/aes.js
+    Respuestas DNS: 7 | registros decodificados: 7 | registros raiz: 1
+    Capa usada: DNS TXT (registros de la web) | enlaces: 51
+    Lectura incompleta (51 < 104): se reintenta
+    Texto de la pagina: ''
+Intento 2 de 4
+    (no se encontro el boton 'desplegar')
+    Titulo de la pagina: ''
+    Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
+    Respuesta: https://zonaeventoslive.infinityfreeapp.com/
     Respuestas DNS: 24 | registros decodificados: 24 | registros raiz: 1
-    Capa usada: DNS TXT (registros de la web) | enlaces: 209
+    Capa usada: DNS TXT (registros de la web) | enlaces: 195
 
 ====================================
 LISTA M3U GENERADA CORRECTAMENTE
-Enlaces unicos: 209
-  BALONCESTO: 15
-  DAZN: 7
+Enlaces unicos: 195
+  BALONCESTO: 16
+  DAZN: 8
   EUROSPORT: 4
-  FORMULA 1: 8
+  FORMULA 1: 7
   HYPERMOTION: 8
-  LA LIGA: 13
-  LIGA DE CAMPEONES: 16
+  LA LIGA: 12
+  LIGA DE CAMPEONES: 15
   MOVISTAR: 2
-  MOVISTAR DEPORTES: 35
+  MOVISTAR DEPORTES: 31
   RFEF TV: 2
-  TDT: 10
-  DEPORTES: 20
+  TDT: 8
+  DEPORTES: 18
   MOTOGP: 4
-  NBA: 4
+  NBA: 3
   TENNIS: 4
   TOROS: 1
-  UFC: 5
+  UFC: 1
   ELCANO: 50
   NEW_ERA (OTROS): 1
 Archivo: zona.m3u
