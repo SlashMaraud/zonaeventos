@@ -1,19 +1,18 @@
-Enlaces en la lista anterior: 155 | minimo esperado: 77
+Enlaces en la lista anterior: 164 | minimo esperado: 82
 Intento 1 de 4
     (no se encontro el boton 'desplegar')
     Titulo de la pagina: ''
     Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/aes.js
-    Respuestas DNS: 23 | registros decodificados: 23 | registros raiz: 15
-    Capa usada: DNS TXT (registros de la web) | enlaces: 164
+    Respuestas DNS: 23 | registros decodificados: 23 | registros raiz: 17
+    Capa usada: DNS TXT (registros de la web) | enlaces: 161
 
 ====================================
 LISTA M3U GENERADA CORRECTAMENTE
-Enlaces unicos: 164
+Enlaces unicos: 161
+  RFEF TV: 1
   NBA: 2
-  RFEF TV: 4
-  DEPORTES: 12
   ELCANO: 50
   NEW_ERA (OTROS): 1
   TENNIS: 1
@@ -22,6 +21,7 @@ Enlaces unicos: 164
   DAZN: 9
   MOVISTAR DEPORTES: 21
   HYPERMOTION: 3
+  DEPORTES: 12
   MOVISTAR: 2
   TDT: 4
   UFC: 1
