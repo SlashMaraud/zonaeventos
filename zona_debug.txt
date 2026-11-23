@@ -14,7 +14,7 @@ Intento 2 de 4
     Titulo de la pagina: ''
     Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
-    Respuestas DNS: 9 | registros decodificados: 9 | registros raiz: 3
+    Respuestas DNS: 9 | registros decodificados: 9 | registros raiz: 1
     Capa usada: DNS TXT (registros de la web) | enlaces: 63
     Lectura incompleta (63 < 70): se reintenta
     Texto de la pagina: ''
