@@ -6,16 +6,17 @@ Intento 1 de 4
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/aes.js
     Respuestas DNS: 9 | registros decodificados: 9 | registros raiz: 2
-    Capa usada: DNS TXT (registros de la web) | enlaces: 61
-    Lectura incompleta (61 < 70): se reintenta
+    Capa usada: DNS TXT (registros de la web) | enlaces: 60
+    Lectura incompleta (60 < 70): se reintenta
     Texto de la pagina: ''
 Intento 2 de 4
+    (no se encontro el boton 'desplegar')
     Titulo de la pagina: ''
     Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
-    Respuestas DNS: 9 | registros decodificados: 9 | registros raiz: 2
-    Capa usada: DNS TXT (registros de la web) | enlaces: 61
-    Lectura incompleta (61 < 70): se reintenta
+    Respuestas DNS: 9 | registros decodificados: 9 | registros raiz: 3
+    Capa usada: DNS TXT (registros de la web) | enlaces: 60
+    Lectura incompleta (60 < 70): se reintenta
     Texto de la pagina: ''
 Intento 3 de 4
     (no se encontro el boton 'desplegar')
@@ -23,18 +24,18 @@ Intento 3 de 4
     Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
     Respuestas DNS: 9 | registros decodificados: 9 | registros raiz: 2
-    Capa usada: DNS TXT (registros de la web) | enlaces: 61
-    Lectura incompleta (61 < 70): se reintenta
+    Capa usada: DNS TXT (registros de la web) | enlaces: 60
+    Lectura incompleta (60 < 70): se reintenta
     Texto de la pagina: ''
 Intento 4 de 4
     (no se encontro el boton 'desplegar')
     Titulo de la pagina: ''
     Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
-    Respuestas DNS: 9 | registros decodificados: 9 | registros raiz: 1
-    Capa usada: DNS TXT (registros de la web) | enlaces: 61
-    Lectura incompleta (61 < 70): se reintenta
+    Respuestas DNS: 9 | registros decodificados: 9 | registros raiz: 2
+    Capa usada: DNS TXT (registros de la web) | enlaces: 60
+    Lectura incompleta (60 < 70): se reintenta
     Texto de la pagina: ''
 
-AVISO: solo 61 enlaces (antes: 141, minimo esperado: 70).
+AVISO: solo 60 enlaces (antes: 141, minimo esperado: 70).
 Parece una lectura incompleta: no se sobrescribe la lista existente.
