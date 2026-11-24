@@ -4,6 +4,7 @@ Intento 1 de 4
     Titulo de la pagina: ''
     Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
+    Respuesta: https://zonaeventoslive.infinityfreeapp.com/aes.js
     Respuestas DNS: 9 | registros decodificados: 9 | registros raiz: 2
     Capa usada: DNS TXT (registros de la web) | enlaces: 58
     Lectura incompleta (58 < 70): se reintenta
@@ -13,7 +14,7 @@ Intento 2 de 4
     Titulo de la pagina: ''
     Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
-    Respuestas DNS: 9 | registros decodificados: 9 | registros raiz: 3
+    Respuestas DNS: 9 | registros decodificados: 9 | registros raiz: 2
     Capa usada: DNS TXT (registros de la web) | enlaces: 58
     Lectura incompleta (58 < 70): se reintenta
     Texto de la pagina: ''
@@ -22,7 +23,7 @@ Intento 3 de 4
     Titulo de la pagina: ''
     Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
-    Respuestas DNS: 9 | registros decodificados: 9 | registros raiz: 1
+    Respuestas DNS: 9 | registros decodificados: 9 | registros raiz: 2
     Capa usada: DNS TXT (registros de la web) | enlaces: 58
     Lectura incompleta (58 < 70): se reintenta
     Texto de la pagina: ''
