@@ -14,25 +14,24 @@ Intento 2 de 4
     Titulo de la pagina: ''
     Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
-    Respuestas DNS: 9 | registros decodificados: 9 | registros raiz: 2
+    Respuestas DNS: 9 | registros decodificados: 9 | registros raiz: 3
     Capa usada: DNS TXT (registros de la web) | enlaces: 62
     Lectura incompleta (62 < 70): se reintenta
     Texto de la pagina: ''
 Intento 3 de 4
-    (no se encontro el boton 'desplegar')
-    Titulo de la pagina: ''
+    Titulo de la pagina: 'CANALES MOVISTAR + DAZN'
     Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
     Respuestas DNS: 9 | registros decodificados: 9 | registros raiz: 2
     Capa usada: DNS TXT (registros de la web) | enlaces: 62
     Lectura incompleta (62 < 70): se reintenta
-    Texto de la pagina: ''
+    Texto de la pagina: 'CANALES MOVISTAR + DAZN\n\nPara reproducir estos canales es necesario tener instalada en windows la aplicacion acestream.\n\n⬇️ Descargar Acestream\n\nPara reproducir estos canales es necesario tener instalada en android la aplicacion Canalpeer.\n\n📢 Descargar CanalPeer\nLA MEJOR FORMA DE APOYAR ES COMPARTIE'
 Intento 4 de 4
     (no se encontro el boton 'desplegar')
     Titulo de la pagina: ''
     Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
-    Respuestas DNS: 9 | registros decodificados: 9 | registros raiz: 2
+    Respuestas DNS: 9 | registros decodificados: 9 | registros raiz: 3
     Capa usada: DNS TXT (registros de la web) | enlaces: 62
     Lectura incompleta (62 < 70): se reintenta
     Texto de la pagina: ''
