@@ -4,15 +4,14 @@ Intento 1 de 4
     Titulo de la pagina: ''
     Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
-    Respuesta: https://zonaeventoslive.infinityfreeapp.com/aes.js
     Respuestas DNS: 24 | registros decodificados: 24 | registros raiz: 18
-    Capa usada: DNS TXT (registros de la web) | enlaces: 232
+    Capa usada: DNS TXT (registros de la web) | enlaces: 230
 
 ====================================
 LISTA M3U GENERADA CORRECTAMENTE
-Enlaces unicos: 232
+Enlaces unicos: 230
   TDT: 10
-  MOVISTAR DEPORTES: 31
+  MOVISTAR DEPORTES: 29
   RFEF TV: 3
   ELCANO: 50
   NEW_ERA (OTROS): 1
