@@ -1,4 +1,4 @@
-Enlaces en la lista anterior: 188 | minimo esperado: 94
+Enlaces en la lista anterior: 190 | minimo esperado: 95
 Intento 1 de 4
     (no se encontro el boton 'desplegar')
     Titulo de la pagina: ''
@@ -6,15 +6,15 @@ Intento 1 de 4
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/aes.js
     Respuestas DNS: 24 | registros decodificados: 24 | registros raiz: 18
-    Capa usada: DNS TXT (registros de la web) | enlaces: 190
+    Capa usada: DNS TXT (registros de la web) | enlaces: 189
 
 ====================================
 LISTA M3U GENERADA CORRECTAMENTE
-Enlaces unicos: 190
+Enlaces unicos: 189
   DAZN: 4
   ELCANO: 50
   NEW_ERA (OTROS): 1
-  FORMULA 1: 7
+  FORMULA 1: 6
   HYPERMOTION: 6
   TOROS: 1
   DEPORTES: 17
