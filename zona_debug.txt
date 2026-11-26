@@ -1,4 +1,4 @@
-Enlaces en la lista anterior: 221 | minimo esperado: 110
+Enlaces en la lista anterior: 203 | minimo esperado: 101
 Intento 1 de 4
     (no se encontro el boton 'desplegar')
     Titulo de la pagina: ''
