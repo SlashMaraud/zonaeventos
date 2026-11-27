@@ -5,6 +5,15 @@ Intento 1 de 4
     Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/aes.js
+    Respuestas DNS: 0 | registros decodificados: 0
+    Capa usada: ninguna | enlaces: 0
+    Lectura incompleta (0 < 90): se reintenta
+    Texto de la pagina: ''
+Intento 2 de 4
+    (no se encontro el boton 'desplegar')
+    Titulo de la pagina: ''
+    Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
+    Respuesta: https://zonaeventoslive.infinityfreeapp.com/
     Respuestas DNS: 24 | registros decodificados: 24 | registros raiz: 18
     Capa usada: DNS TXT (registros de la web) | enlaces: 180
 
