@@ -1,34 +1,33 @@
-Enlaces en la lista anterior: 152 | minimo esperado: 76
+Enlaces en la lista anterior: 202 | minimo esperado: 101
 Intento 1 de 4
-    (no se encontro el boton 'desplegar')
-    Titulo de la pagina: ''
+    Titulo de la pagina: 'CANALES MOVISTAR + DAZN'
     Respuesta: https://cdn.jsdelivr.net/npm/disable-devtool
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/
     Respuesta: https://zonaeventoslive.infinityfreeapp.com/aes.js
-    Respuestas DNS: 24 | registros decodificados: 24 | registros raiz: 18
-    Capa usada: DNS TXT (registros de la web) | enlaces: 202
+    Respuestas DNS: 24 | registros decodificados: 24 | registros raiz: 1
+    Capa usada: DNS TXT (registros de la web) | enlaces: 204
 
 ====================================
 LISTA M3U GENERADA CORRECTAMENTE
-Enlaces unicos: 202
+Enlaces unicos: 204
+  BALONCESTO: 13
   DAZN: 7
-  ELCANO: 50
-  NEW_ERA (OTROS): 1
-  MOVISTAR: 2
+  EUROSPORT: 4
   FORMULA 1: 6
   HYPERMOTION: 6
-  DEPORTES: 21
-  TOROS: 1
-  TENNIS: 3
+  LA LIGA: 18
+  LIGA DE CAMPEONES: 20
+  MOVISTAR: 2
+  MOVISTAR DEPORTES: 24
   RFEF TV: 3
   TDT: 9
-  LA LIGA: 16
-  NBA: 4
-  EUROSPORT: 4
-  MOVISTAR DEPORTES: 24
-  BALONCESTO: 13
-  LIGA DE CAMPEONES: 20
-  UFC: 5
+  DEPORTES: 21
   MOTOGP: 7
+  NBA: 4
+  TENNIS: 3
+  TOROS: 1
+  UFC: 5
+  ELCANO: 50
+  NEW_ERA (OTROS): 1
 Archivo: zona.m3u
 ====================================
